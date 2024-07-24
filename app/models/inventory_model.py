@@ -7,10 +7,10 @@ class InventoryItem(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'quantity': self.quantity,
-            'price': self.price
-        }
+    # def to_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'name': self.name,
+    #         'quantity': self.quantity,
+    #         'price': self.price
+    #     }

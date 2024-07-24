@@ -8,7 +8,6 @@ parser_invoice.add_argument('amount', type=float, required=True, help='Amount ca
 parser_invoice.add_argument('description', type=str)
 
 
-
 class InvoiceListResource(Resource):
     def get(self):
         invoices = Invoice.query.all()
@@ -41,5 +40,3 @@ class InvoiceResource(Resource):
         db.session.add(new_invoice)
         db.session.commit()
         return new_invoice.to_dict(), 201
-
-
