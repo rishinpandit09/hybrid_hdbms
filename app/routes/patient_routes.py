@@ -1,5 +1,3 @@
-# app/routes/patient_routes.py
-from flask import jsonify
 from flask_restful import Resource, reqparse
 from app.models.patient_model import Patient
 from app import db
@@ -11,7 +9,6 @@ parser.add_argument('age', type=int, required=True, help='Age cannot be blank')
 parser.add_argument('diagnosis', type=str)
 parser.add_argument('treatment', type=str)
 
-
 class PatientListResource(Resource):
     def get(self):
         patients = Patient.query.all()
@@ -19,6 +16,7 @@ class PatientListResource(Resource):
 
     def post(self):
         args = parser.parse_args()
+
         new_patient = Patient(
             name=args['name'],
             age=args['age'],
@@ -38,10 +36,8 @@ class PatientListResource(Resource):
             doctor_id=new_patient.doctor_id
         )
 
-        return jsonify({'message': 'Patient added', 'patient': new_patient.id}), 201
+        return {'message': 'Patient added', 'patient': new_patient.id}, 201
 
-
-# app/routes/patient_routes.py (continued)
 class PatientResource(Resource):
     def get(self, id):
         patient = Patient.query.get_or_404(id)
@@ -56,7 +52,8 @@ class PatientResource(Resource):
         patient.treatment = args.get('treatment', patient.treatment)
         db.session.commit()
 
-        # # Update in Memgraph
+        # Update in Memgraph
+        # (uncomment and adjust the following code if Memgraph update is needed)
         # if memgraph:
         #     query = (
         #         'MATCH (n:Patient) WHERE n.id = $id '
@@ -79,7 +76,8 @@ class PatientResource(Resource):
         db.session.delete(patient)
         db.session.commit()
 
-        # # Delete from Memgraph
+        # Delete from Memgraph
+        # (uncomment and adjust the following code if Memgraph deletion is needed)
         # if memgraph:
         #     query = 'MATCH (n:Patient) WHERE n.id = $id DELETE n'
         #     params = {'id': id}

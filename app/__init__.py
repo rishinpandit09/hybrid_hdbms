@@ -1,6 +1,7 @@
 # app/__init__.py
 import logging
 from flask import Flask
+from flask_cors import CORS
 from flask_migrate import Migrate
 from neo4j import GraphDatabase
 
@@ -29,8 +30,9 @@ def create_app():
         # Check the connection
         client.verify_connectivity()
     db.init_app(app)
+    # Enable CORS for all routes
+    CORS(app)
 
-    migrate = Migrate(app, db)
 
     with app.app_context():
         # Importing resources within the app context to avoid circular imports
