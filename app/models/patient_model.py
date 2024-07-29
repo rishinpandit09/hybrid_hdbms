@@ -9,11 +9,11 @@ class Patient(db.Model):
     treatment = db.Column(db.String(200), nullable=True)
     doctor_id = db.Column(db.Integer, db.ForeignKey('doctor.id'), nullable=True)
 
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'name': self.name,
-    #         'age': self.age,
-    #         'diagnosis': self.diagnosis,
-    #         'treatment': self.treatment
-    #     }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'age': self.age,
+            'diagnosis': self.diagnosis,
+            'treatment': self.treatment
+        }

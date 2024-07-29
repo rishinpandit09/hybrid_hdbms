@@ -5,7 +5,7 @@ import json
 
 class GraphRepresentationResource(Resource):
     def get(self):
-        graph = Graph("bolt://localhost:7687", auth=("neo4j", "password"))
+        graph = Graph("bolt://localhost:7687", auth=("", ""))
         query = """
         MATCH (n)-[r]->(m)
         RETURN n, r, m
