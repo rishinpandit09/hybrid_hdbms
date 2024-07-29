@@ -7,10 +7,10 @@ class Employee(db.Model):
     role = db.Column(db.String(100), nullable=False)
     department = db.Column(db.String(100))
 
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'name': self.name,
-    #         'role': self.role,
-    #         'department': self.department
-    #     }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'role': self.role,
+            'department': self.department
+        }

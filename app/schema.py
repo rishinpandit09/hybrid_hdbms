@@ -2,7 +2,7 @@ import graphene
 from graphene_sqlalchemy import SQLAlchemyObjectType, SQLAlchemyConnectionField
 
 from app import db
-from app.models.Doctor import Doctor
+from app.models.doctor_model import Doctor
 from app.models.employee_model import Employee
 from app.models.insurance_claim_model import InsuranceClaim
 from app.models.inventory_model import InventoryItem

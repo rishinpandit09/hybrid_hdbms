@@ -12,6 +12,7 @@ from flask_restful import Api
 from app.db import db
 from app.routes.graph_creation_route import CreateGraphInMemgraph
 from app.routes.graph_route import GraphRepresentationResource
+from app.routes.patient_graph import PatientGraph
 from app.schema import schema
 
 
@@ -57,6 +58,7 @@ def create_app():
         api.add_resource(GraphRepresentationResource, '/graph')
         api.add_resource(CreateGraphInMemgraph, '/create-graph')  # Register the graph creation route
         from flask_graphql import GraphQLView
+        api.add_resource(PatientGraph, '/patient-graph')  # Register the patient graph route
 
         app.add_url_rule(
             '/graphql',

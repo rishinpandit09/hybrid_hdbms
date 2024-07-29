@@ -8,10 +8,10 @@ class Invoice(db.Model):
     patient_id = db.Column(db.Integer, db.ForeignKey('patient.id'), nullable=False)
 
 
-    # def to_dict(self):
-    #     return {
-    #         'id': self.id,
-    #         'patient_id': self.patient_id,
-    #         'amount': self.amount,
-    #         'description': self.description
-    #     }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'patient_id': self.patient_id,
+            'amount': self.amount,
+            'description': self.description
+        }

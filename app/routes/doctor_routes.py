@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from flask_restful import Resource
-from app.models import db, Doctor
+from app.models import db, doctor_model
 from app.memgraph import insert_doctor_to_memgraph
 
 
